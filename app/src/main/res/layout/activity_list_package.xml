@@ -10,7 +10,7 @@
         android:layout_width="0dp"
         android:layout_height="120dp"
         android:contentDescription="@string/initial_banner_packages"
-        android:src="@color/colorPrimaryDark"
+        android:src="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
