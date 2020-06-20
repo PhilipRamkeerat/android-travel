@@ -18,6 +18,9 @@ public class ListPackageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_package);
+
+        setTitle("Packages");
+
         ListView listOfPackages = findViewById(R.id.list_package_listview);
 
         List<Package> packages = new PackageDAO().list();

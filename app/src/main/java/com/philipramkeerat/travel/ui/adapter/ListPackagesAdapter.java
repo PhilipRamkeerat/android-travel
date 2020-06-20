@@ -13,9 +13,11 @@ import android.widget.TextView;
 import com.philipramkeerat.travel.R;
 import com.philipramkeerat.travel.model.Package;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
-
-import static android.view.LayoutInflater.from;
+import java.util.Locale;
 
 public class ListPackagesAdapter extends BaseAdapter {
 
@@ -62,11 +64,24 @@ public class ListPackagesAdapter extends BaseAdapter {
         Drawable drawableImagePackage = resources.getDrawable(idOfDrawable);
         image.setImageDrawable(drawableImagePackage);
 
+        // Days
         TextView days = viewCreated.findViewById(R.id.item_pacote_dias);
-        days.setText(packageForBind.getDays() + " days");
+        String daysText = "";
+        int quantityOfDays = packageForBind.getDays();
+        if (quantityOfDays > 1) {
+            daysText = quantityOfDays + " days";
+        } else {
+            daysText = quantityOfDays + " day";
+        }
+        days.setText(daysText);
 
+        // Price
         TextView price = viewCreated.findViewById(R.id.item_pacote_preco);
-        price.setText(packageForBind.getPrice().toString());
+        BigDecimal packagePrice = packageForBind.getPrice();
+        NumberFormat brazilianFormat = DecimalFormat.getCurrencyInstance(
+                new Locale("pt", "br"));
+        String brazilianCoin = brazilianFormat.format(packagePrice).replace("R$", "R$ ");
+        price.setText(brazilianCoin);
 
         return viewCreated;
     }
