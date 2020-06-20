@@ -1,10 +1,14 @@
 package com.philipramkeerat.travel.ui.adapter;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.philipramkeerat.travel.R;
 import com.philipramkeerat.travel.model.Package;
@@ -43,6 +47,27 @@ public class ListPackagesAdapter extends BaseAdapter {
         // Create layout inflater, attachToRoot false for adapter create the view
         View viewCreated = LayoutInflater.from(context)
                 .inflate(R.layout.item_package, parent, false);
+
+        // get package for bind process
+        Package packageForBind = packages.get(position);
+
+        TextView local = viewCreated.findViewById(R.id.item_pacote_local);
+        local.setText(packageForBind.getLocal());
+
+        // Image bind
+        ImageView image = viewCreated.findViewById(R.id.item_pacote_imagem);
+        Resources resources = context.getResources();
+        int idOfDrawable = resources.getIdentifier(packageForBind.getImage()
+                , "drawable", context.getPackageName());
+        Drawable drawableImagePackage = resources.getDrawable(idOfDrawable);
+        image.setImageDrawable(drawableImagePackage);
+
+        TextView days = viewCreated.findViewById(R.id.item_pacote_dias);
+        days.setText(packageForBind.getDays() + " days");
+
+        TextView price = viewCreated.findViewById(R.id.item_pacote_preco);
+        price.setText(packageForBind.getPrice().toString());
+
         return viewCreated;
     }
 }
