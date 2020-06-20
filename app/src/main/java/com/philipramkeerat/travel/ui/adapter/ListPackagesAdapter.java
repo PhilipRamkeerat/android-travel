@@ -1,7 +1,6 @@
 package com.philipramkeerat.travel.ui.adapter;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,12 +11,11 @@ import android.widget.TextView;
 
 import com.philipramkeerat.travel.R;
 import com.philipramkeerat.travel.model.Package;
+import com.philipramkeerat.travel.util.CoinUtil;
+import com.philipramkeerat.travel.util.DaysUtil;
+import com.philipramkeerat.travel.util.ResourceUtil;
 
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.List;
-import java.util.Locale;
 
 public class ListPackagesAdapter extends BaseAdapter {
 
@@ -64,33 +62,22 @@ public class ListPackagesAdapter extends BaseAdapter {
     private void showPrice(View viewCreated, Package packageForBind) {
         // Price
         TextView price = viewCreated.findViewById(R.id.item_pacote_preco);
-        BigDecimal packagePrice = packageForBind.getPrice();
-        NumberFormat brazilianFormat = DecimalFormat.getCurrencyInstance(
-                new Locale("pt", "br"));
-        String brazilianCoin = brazilianFormat.format(packagePrice).replace("R$", "R$ ");
+        String brazilianCoin = CoinUtil.formatForBrazilian(packageForBind.getPrice());
         price.setText(brazilianCoin);
     }
+
 
     private void showDays(View viewCreated, Package packageForBind) {
         // Days
         TextView days = viewCreated.findViewById(R.id.item_pacote_dias);
-        String daysText = "";
-        int quantityOfDays = packageForBind.getDays();
-        if (quantityOfDays > 1) {
-            daysText = quantityOfDays + " days";
-        } else {
-            daysText = quantityOfDays + " day";
-        }
+        String daysText = DaysUtil.formatInText(packageForBind.getDays());
         days.setText(daysText);
     }
 
     private void showImage(View viewCreated, Package packageForBind) {
         // Image bind
         ImageView image = viewCreated.findViewById(R.id.item_pacote_imagem);
-        Resources resources = context.getResources();
-        int idOfDrawable = resources.getIdentifier(packageForBind.getImage()
-                , "drawable", context.getPackageName());
-        Drawable drawableImagePackage = resources.getDrawable(idOfDrawable);
+        Drawable drawableImagePackage = ResourceUtil.returnDrawable(context, packageForBind.getImage());
         image.setImageDrawable(drawableImagePackage);
     }
 
