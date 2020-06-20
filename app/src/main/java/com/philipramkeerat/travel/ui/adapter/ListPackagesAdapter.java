@@ -22,7 +22,7 @@ import java.util.Locale;
 public class ListPackagesAdapter extends BaseAdapter {
 
     private final List<Package> packages;
-    private Context context;
+    private final Context context;
 
     public ListPackagesAdapter(List<Package> packages, Context context) {
         this.packages = packages;
@@ -53,17 +53,25 @@ public class ListPackagesAdapter extends BaseAdapter {
         // get package for bind process
         Package packageForBind = packages.get(position);
 
-        TextView local = viewCreated.findViewById(R.id.item_pacote_local);
-        local.setText(packageForBind.getLocal());
+        showLocal(viewCreated, packageForBind);
+        showImage(viewCreated, packageForBind);
+        showDays(viewCreated, packageForBind);
+        showPrice(viewCreated, packageForBind);
 
-        // Image bind
-        ImageView image = viewCreated.findViewById(R.id.item_pacote_imagem);
-        Resources resources = context.getResources();
-        int idOfDrawable = resources.getIdentifier(packageForBind.getImage()
-                , "drawable", context.getPackageName());
-        Drawable drawableImagePackage = resources.getDrawable(idOfDrawable);
-        image.setImageDrawable(drawableImagePackage);
+        return viewCreated;
+    }
 
+    private void showPrice(View viewCreated, Package packageForBind) {
+        // Price
+        TextView price = viewCreated.findViewById(R.id.item_pacote_preco);
+        BigDecimal packagePrice = packageForBind.getPrice();
+        NumberFormat brazilianFormat = DecimalFormat.getCurrencyInstance(
+                new Locale("pt", "br"));
+        String brazilianCoin = brazilianFormat.format(packagePrice).replace("R$", "R$ ");
+        price.setText(brazilianCoin);
+    }
+
+    private void showDays(View viewCreated, Package packageForBind) {
         // Days
         TextView days = viewCreated.findViewById(R.id.item_pacote_dias);
         String daysText = "";
@@ -74,15 +82,20 @@ public class ListPackagesAdapter extends BaseAdapter {
             daysText = quantityOfDays + " day";
         }
         days.setText(daysText);
+    }
 
-        // Price
-        TextView price = viewCreated.findViewById(R.id.item_pacote_preco);
-        BigDecimal packagePrice = packageForBind.getPrice();
-        NumberFormat brazilianFormat = DecimalFormat.getCurrencyInstance(
-                new Locale("pt", "br"));
-        String brazilianCoin = brazilianFormat.format(packagePrice).replace("R$", "R$ ");
-        price.setText(brazilianCoin);
+    private void showImage(View viewCreated, Package packageForBind) {
+        // Image bind
+        ImageView image = viewCreated.findViewById(R.id.item_pacote_imagem);
+        Resources resources = context.getResources();
+        int idOfDrawable = resources.getIdentifier(packageForBind.getImage()
+                , "drawable", context.getPackageName());
+        Drawable drawableImagePackage = resources.getDrawable(idOfDrawable);
+        image.setImageDrawable(drawableImagePackage);
+    }
 
-        return viewCreated;
+    private void showLocal(View viewCreated, Package packageForBind) {
+        TextView local = viewCreated.findViewById(R.id.item_pacote_local);
+        local.setText(packageForBind.getLocal());
     }
 }
