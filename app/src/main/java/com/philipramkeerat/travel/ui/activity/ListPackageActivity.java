@@ -2,6 +2,7 @@ package com.philipramkeerat.travel.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 
@@ -23,6 +24,9 @@ public class ListPackageActivity extends AppCompatActivity {
 
         setTitle(TITLE_APPBAR);
         configureList();
+
+        Intent intent = new Intent(this, ResumePackageActivity.class);
+        startActivity(intent);
     }
 
     private void configureList() {
