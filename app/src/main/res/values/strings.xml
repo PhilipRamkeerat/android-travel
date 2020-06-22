@@ -18,4 +18,9 @@
     <string name="hint_verification_code">CVC</string>
     <string name="button_finish_purchase">FINALIZAR COMPRA</string>
     <string name="card_name">Nome no cartão</string>
+    <string name="congrats">Parabéns</string>
+    <string name="success_description">Compra realizada com sucesso =D</string>
+    <string name="resume_purchase">Confira o resumo da compra:</string>
+    <string name="initial_content">Conteúdo Inicial</string>
+    <string name="banner_local_image">banner_local_image</string>
 </resources>

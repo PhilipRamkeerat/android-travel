@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.activity.ResumePurchaseActivity">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/resume_purchase_banner_initial"
         android:layout_width="0dp"
         android:layout_height="100dp"
+        android:contentDescription="@string/initial_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,20 +21,17 @@
         android:id="@+id/resume_purchase_congrats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Parabéns"
+        android:layout_margin="8dp"
+        android:text="@string/congrats"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@+id/resume_purchase_banner_initial"
         app:layout_constraintEnd_toEndOf="@+id/resume_purchase_banner_initial"
         app:layout_constraintStart_toStartOf="@+id/resume_purchase_banner_initial"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/resume_purchase_banner_initial"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -42,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Compra realizada com sucesso =D"
+        android:text="@string/success_description"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/resume_purchase_congrats"
@@ -53,12 +50,8 @@
         android:id="@+id/resume_purchase_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Confira o resumo da compra:"
+        android:layout_margin="8dp"
+        android:text="@string/resume_purchase"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resume_purchase_banner_initial" />
@@ -68,11 +61,12 @@
         android:layout_width="0dp"
         android:layout_height="150dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/banner_local_image"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resume_purchase_description"
-        app:srcCompat="@drawable/sao_paulo_sp" />
+        tools:srcCompat="@drawable/sao_paulo_sp" />
 
     <TextView
         android:id="@+id/resume_purchase_local_package"
@@ -81,7 +75,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resume_purchase_image_package"
         tools:text="São Paulo" />
@@ -91,7 +84,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/resume_purchase_local_package"
         app:layout_constraintTop_toBottomOf="@+id/resume_purchase_local_package"
         tools:text="08/10 - 10/12 de 2020" />
@@ -101,7 +93,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/resume_purchase_date"
         app:layout_constraintTop_toBottomOf="@+id/resume_purchase_date"
         tools:text="R$ 243,99" />
