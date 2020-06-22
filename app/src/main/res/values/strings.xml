@@ -3,4 +3,9 @@
     <string name="specials">Specials</string>
     <string name="initial_banner_packages">Initial banner packages</string>
     <string name="brazil">Brazil</string>
+    <string name="_2_days">2 dias</string>
+    <string name="final_price">Preço final:</string>
+    <string name="confirm_payment">Realizar Pagamento</string>
+    <string name="mock_price">R$ 243,99</string>
+    <string name="image_of_package">Imagem do Pacote</string>
 </resources>
