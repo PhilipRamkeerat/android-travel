@@ -7,7 +7,7 @@
     tools:context=".ui.activity.PaymentActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/payment_guide"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/payment_value_purchase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -32,21 +32,21 @@
         android:layout_marginTop="20dp"
         android:text="Valor da compra:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/payment_guide" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/payment_price_package"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="R$ 421,50"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintStart_toStartOf="@+id/payment_value_purchase"
+        app:layout_constraintTop_toBottomOf="@+id/payment_value_purchase" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/payment_number_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -56,9 +56,40 @@
         android:layout_marginRight="8dp"
         android:ems="10"
         android:hint="Número do Cartão"
-        android:maxLength="12"
         android:inputType="number"
+        android:maxLength="12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/payment_price_package" />
+
+    <EditText
+        android:id="@+id/payment_month_card"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:hint="MM"
+        android:inputType="number"
+        android:maxLength="2"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@id/payment_number_card"
+        app:layout_constraintTop_toBottomOf="@id/payment_number_card" />
+
+    <EditText
+        android:id="@+id/payment_year_card"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:hint="AA"
+        android:inputType="number"
+        android:maxLength="2"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@id/payment_month_card"
+        app:layout_constraintTop_toBottomOf="@id/payment_number_card" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
