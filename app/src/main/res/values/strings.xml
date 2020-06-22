@@ -8,4 +8,14 @@
     <string name="confirm_payment">Realizar Pagamento</string>
     <string name="mock_price">R$ 243,99</string>
     <string name="image_of_package">Imagem do Pacote</string>
+    <string name="mask_for_cardname">abcdefghijklmnopqrstuvwxyzçABCDEFGHIJKLMNOPQRSTUVWXYZÇ\u0020</string>
+    <string name="payment_guide_message">Digite as informações de cartão de crédito que você deseja utilizar para pagamento</string>
+    <string name="purchase_value">Valor da compra:</string>
+    <string name="mock_price_value">R$ 421,50</string>
+    <string name="hint_card_number">Número do Cartão</string>
+    <string name="hint_month">MM</string>
+    <string name="hint_year">AA</string>
+    <string name="hint_verification_code">CVC</string>
+    <string name="button_finish_purchase">FINALIZAR COMPRA</string>
+    <string name="card_name">Nome no cartão</string>
 </resources>

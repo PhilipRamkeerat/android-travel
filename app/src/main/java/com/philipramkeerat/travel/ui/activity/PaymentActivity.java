@@ -27,8 +27,6 @@ public class PaymentActivity extends AppCompatActivity {
 
         // Price bind
         ShowPrice(packageSaoPaulo);
-
-
     }
 
     private void ShowPrice(Package packageName) {
