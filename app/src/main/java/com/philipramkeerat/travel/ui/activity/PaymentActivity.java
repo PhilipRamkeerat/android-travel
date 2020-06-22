@@ -2,6 +2,7 @@ package com.philipramkeerat.travel.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -27,6 +28,10 @@ public class PaymentActivity extends AppCompatActivity {
 
         // Price bind
         ShowPrice(packageSaoPaulo);
+
+        Intent intent = new Intent(this, ResumePurchaseActivity.class);
+        startActivity(intent);
+
     }
 
     private void ShowPrice(Package packageName) {
