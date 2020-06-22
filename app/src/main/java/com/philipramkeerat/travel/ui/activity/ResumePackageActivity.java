@@ -2,6 +2,7 @@ package com.philipramkeerat.travel.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -36,6 +37,9 @@ public class ResumePackageActivity extends AppCompatActivity {
         showDays(packageSaoPaulo);
         showPrice(packageSaoPaulo);
         showDate(packageSaoPaulo);
+
+        Intent intent = new Intent(this, PaymentActivity.class);
+        startActivity(intent);
     }
 
     private void showDate(Package packageName) {
