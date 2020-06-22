@@ -44,17 +44,21 @@
 
     <TextView
         android:id="@+id/resume_package_data"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="08/12 - 10/12 de 2020"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="438dp"
+        app:layout_constraintBottom_toTopOf="@+id/resume_package_button_confirm_payment"
+        app:layout_constraintEnd_toStartOf="@+id/resume_package_price"
         app:layout_constraintStart_toStartOf="@+id/resume_package_days"
         app:layout_constraintTop_toBottomOf="@+id/resume_package_days"
         tools:text="08/12 - 10/12 de 2020" />
 
     <TextView
         android:id="@+id/resume_package_price"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
@@ -63,14 +67,13 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/resume_package_data"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/resume_package_data"
         tools:text="R$ 243,99" />
 
     <TextView
         android:id="@+id/resume_package_price_final"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="Preço final:"
         app:layout_constraintBottom_toTopOf="@+id/resume_package_price"
         app:layout_constraintEnd_toEndOf="@+id/resume_package_price"
