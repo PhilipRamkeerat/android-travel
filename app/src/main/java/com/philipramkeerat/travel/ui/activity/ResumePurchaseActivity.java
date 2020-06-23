@@ -1,12 +1,12 @@
 package com.philipramkeerat.travel.ui.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.philipramkeerat.travel.R;
 import com.philipramkeerat.travel.model.Package;
@@ -14,7 +14,7 @@ import com.philipramkeerat.travel.util.CoinUtil;
 import com.philipramkeerat.travel.util.DateUtil;
 import com.philipramkeerat.travel.util.ResourceUtil;
 
-import java.math.BigDecimal;
+import static com.philipramkeerat.travel.ui.activity.PackageActivityConstants.KEY_PACKAGE;
 
 public class ResumePurchaseActivity extends AppCompatActivity {
 
@@ -24,17 +24,23 @@ public class ResumePurchaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resume_purchase);
-
         setTitle(TITLE_APPBAR);
+        loadReceivedPackage();
+    }
 
+    private void loadReceivedPackage() {
         Intent intent = getIntent();
-        if (intent.hasExtra("package")) {
-            Package receivedPackage = (Package) intent.getSerializableExtra("package");
-            showLocal(receivedPackage);
-            showImage(receivedPackage);
-            showData(receivedPackage);
-            showPrice(receivedPackage);
+        if (intent.hasExtra(KEY_PACKAGE)) {
+            Package receivedPackage = (Package) intent.getSerializableExtra(KEY_PACKAGE);
+            initializateFields(receivedPackage);
         }
+    }
+
+    private void initializateFields(Package receivedPackage) {
+        showLocal(receivedPackage);
+        showImage(receivedPackage);
+        showData(receivedPackage);
+        showPrice(receivedPackage);
     }
 
     private void showPrice(Package packageName) {
