@@ -17,6 +17,7 @@ import com.philipramkeerat.travel.util.DateUtil;
 import com.philipramkeerat.travel.util.DaysUtil;
 import com.philipramkeerat.travel.util.ResourceUtil;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -32,23 +33,29 @@ public class ResumePackageActivity extends AppCompatActivity {
 
         setTitle(TITLE_APPBAR);
 
-        Package packageSaoPaulo = new Package("São Paulo", "sao_paulo_sp", 2, new BigDecimal("243.99"));
+        Intent intent = getIntent();
+        if (intent.hasExtra("package")) {
+            final Package receivedPackage = (Package) intent.getSerializableExtra("package");
 
-        showLocal(packageSaoPaulo);
-        showImage(packageSaoPaulo);
-        showDays(packageSaoPaulo);
-        showPrice(packageSaoPaulo);
-        showDate(packageSaoPaulo);
+            showLocal(receivedPackage);
+            showImage(receivedPackage);
+            showDays(receivedPackage);
+            showPrice(receivedPackage);
+            showDate(receivedPackage);
 
-        Button buttonMakePayment = findViewById(R.id.resume_package_button_confirm_payment);
-        buttonMakePayment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ResumePackageActivity.this,
-                        PaymentActivity.class);
-                startActivity(intent);
-            }
-        });
+            Button buttonMakePayment = findViewById(R.id.resume_package_button_confirm_payment);
+            buttonMakePayment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ResumePackageActivity.this,
+                            PaymentActivity.class);
+                    intent.putExtra("package", receivedPackage);
+                    startActivity(intent);
+                }
+            });
+        }
+
+
     }
 
     private void showDate(Package packageName) {

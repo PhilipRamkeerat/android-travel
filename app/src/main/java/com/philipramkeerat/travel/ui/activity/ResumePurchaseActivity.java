@@ -2,6 +2,7 @@ package com.philipramkeerat.travel.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -26,15 +27,14 @@ public class ResumePurchaseActivity extends AppCompatActivity {
 
         setTitle(TITLE_APPBAR);
 
-        Package packageSaoPaulo = new Package("São Paulo", "sao_paulo_sp", 2, new BigDecimal("255.99"));
-
-        showLocal(packageSaoPaulo);
-
-        showImage(packageSaoPaulo);
-
-        showData(packageSaoPaulo);
-
-        showPrice(packageSaoPaulo);
+        Intent intent = getIntent();
+        if (intent.hasExtra("package")) {
+            Package receivedPackage = (Package) intent.getSerializableExtra("package");
+            showLocal(receivedPackage);
+            showImage(receivedPackage);
+            showData(receivedPackage);
+            showPrice(receivedPackage);
+        }
     }
 
     private void showPrice(Package packageName) {

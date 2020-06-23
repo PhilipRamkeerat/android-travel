@@ -30,13 +30,14 @@ public class ListPackageActivity extends AppCompatActivity {
 
     private void configureList() {
         ListView listOfPackages = findViewById(R.id.list_package_listview);
-        List<Package> packages = new PackageDAO().list();
+        final List<Package> packages = new PackageDAO().list();
         listOfPackages.setAdapter(new ListPackagesAdapter(packages, this));
-
         listOfPackages.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Package clickedPackage = packages.get(position);
                 Intent intent = new Intent(ListPackageActivity.this, ResumePackageActivity.class);
+                intent.putExtra("package", clickedPackage);
                 startActivity(intent);
             }
         });

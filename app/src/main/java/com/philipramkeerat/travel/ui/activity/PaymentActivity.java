@@ -12,6 +12,7 @@ import com.philipramkeerat.travel.R;
 import com.philipramkeerat.travel.model.Package;
 import com.philipramkeerat.travel.util.CoinUtil;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class PaymentActivity extends AppCompatActivity {
@@ -25,22 +26,25 @@ public class PaymentActivity extends AppCompatActivity {
 
         setTitle(TITLE_APPBAR);
 
-        Package packageSaoPaulo = new Package("São Paulo", "sao_paulo_sp", 2,
-                new BigDecimal("243.99"));
+        Intent intent = getIntent();
+        if (intent.hasExtra("package")) {
+            final Package receivedPackage = (Package) intent.getSerializableExtra("package");
 
-        // Price bind
-        ShowPrice(packageSaoPaulo);
+            ShowPrice(receivedPackage);
 
-        Button buttonFinishPurchase = findViewById(R.id.payment_button_finish_purchase);
+            Button buttonFinishPurchase = findViewById(R.id.payment_button_finish_purchase);
 
-        buttonFinishPurchase.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PaymentActivity.this,
-                        ResumePurchaseActivity.class);
-                startActivity(intent);
-            }
-        });
+            buttonFinishPurchase.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(PaymentActivity.this,
+                            ResumePurchaseActivity.class);
+                    intent.putExtra("package", receivedPackage);
+                    startActivity(intent);
+                }
+            });
+        }
+
 
     }
 
