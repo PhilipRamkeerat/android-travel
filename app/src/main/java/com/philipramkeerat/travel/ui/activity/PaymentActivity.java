@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.philipramkeerat.travel.R;
@@ -29,8 +31,16 @@ public class PaymentActivity extends AppCompatActivity {
         // Price bind
         ShowPrice(packageSaoPaulo);
 
-        Intent intent = new Intent(this, ResumePurchaseActivity.class);
-        startActivity(intent);
+        Button buttonFinishPurchase = findViewById(R.id.payment_button_finish_purchase);
+
+        buttonFinishPurchase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PaymentActivity.this,
+                        ResumePurchaseActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

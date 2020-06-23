@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.philipramkeerat.travel.R;
@@ -24,14 +26,20 @@ public class ListPackageActivity extends AppCompatActivity {
 
         setTitle(TITLE_APPBAR);
         configureList();
-
-        Intent intent = new Intent(this, ResumePackageActivity.class);
-        startActivity(intent);
     }
 
     private void configureList() {
         ListView listOfPackages = findViewById(R.id.list_package_listview);
         List<Package> packages = new PackageDAO().list();
         listOfPackages.setAdapter(new ListPackagesAdapter(packages, this));
+
+        listOfPackages.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ListPackageActivity.this, ResumePackageActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
